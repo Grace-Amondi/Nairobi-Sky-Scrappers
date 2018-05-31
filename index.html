@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Tallest Buildings in Kenya</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+    <meta name="description" content="Nairobi ScyScrappers" />
+    <meta name="author" content="Grace Amondi" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <style>
+        #map {
+            position: fixed;
+            width: 60%;
+        }
+
+        #features {
+            width: 40%;
+            margin-left: 60%;
+            font-family: sans-serif;
+            overflow-y: scroll;
+            background-color: #fafafa;
+            height: absolute;
+        }
+
+        section {
+            padding: 40px 50px;
+            line-height: 25px;
+            border-bottom: 1px solid #ddd;
+            opacity: 0.25;
+            font-size: 18px;
+        }
+
+        section.active {
+            opacity: 1;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 200px;
+        }
+
+        h3 {
+            text-align: center;
+            color: white;
+        }
+
+        img {
+            width: 100%
+        }
+
+        #marker {
+            background-image: url('/images/building.png');
+            background-size: cover;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+    <div class="ui top fixed menu">
+        <div class="item">
+            <img src="/images/building.png">
+        </div>
+        <div class="item">
+            <h1 style="color: #079992">TALLEST SCYSCRAPERS IN NAIROBI</h1>
+        </div>
+        <div class="item right aligned">
+            <button class="ui secondary basic button" style="color:teal"><i class="github icon large"></i>
+            </button>
+
+        </div>
+
+    </div>
+    <div id='map'></div>
+    <div id='features'>
+        <section id='nairobi' class='active' style="border-color:#2e86de">
+            <div class="ui right fixed vertical menu" style="background-color:#2e86de;height:30px;width:40%;position: fixed;top:59px">
+                <div class="item">
+                    <h3>NAIROBI SCYSCRAPERS</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="http://www.mygov.go.ke/wp-content/uploads/2016/06/Teleposta-Towers.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting a new case.
+                "The London criminal is certainly a dull fellow," Sherlock bemoans. "There have been numerous petty thefts,"
+                Watson offers in response. Just then a telegram arrives from Sherlock's brother Mycroft with a mysterious
+                case.
+            </p>
+        </section>
+        <section id='teleposta' style="border-color:#00C6B2">
+            <div class="ui right fixed vertical menu" style="background-color:#00C6B2;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>Teleposta Towers</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="http://www.mygov.go.ke/wp-content/uploads/2016/06/Teleposta-Towers.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting a new case.
+                "The London criminal is certainly a dull fellow," Sherlock bemoans. "There have been numerous petty thefts,"
+                Watson offers in response. Just then a telegram arrives from Sherlock's brother Mycroft with a mysterious
+                case.
+            </p>
+        </section>
+        <section id='prism' style="border-color:#FFBE00">
+            <div class="ui right fixed vertical menu" style="background-color:#FFBE00;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>Prism Tower</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h3>Prism Tower</h3>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="http://touchstoneproperties.co.ke/wp-content/uploads/2015/03/54ead872a41cd876035881.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>Arthur Cadogan West was found dead, head crushed in on train tracks at Aldgate Station at 6AM Tuesday morning.
+                West worked at Woolwich Arsenal on the Bruce-Partington submarine, a secret military project. Plans for the
+                submarine had been stolen and seven of the ten missing papers were found in West's possession. Mycroft implores
+                Sherlock to take the case and recover the three missing papers.</p>
+        </section>
+        <section id='times' style="border-color:#ff6b6b">
+            <div class="ui right fixed vertical menu" style="background-color:#ff6b6b;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>Times Towers</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="https://c1.staticflickr.com/6/5569/14957845071_9bc9b0c54f_b.jpg">
+                    </div>
+                </div>
+            </div>
+            <h3>Times Towers</h3>
+            <p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere,
+                then moved to Aldgate Station to create the illusion that he was crushed on the tracks by a train. On their
+                way to Woolwich Sherlock dispatches a telegram to Mycroft at London Bridge: "Send list of all foreign spies
+                known to be in England, with full address."</p>
+        </section>
+        <section id='montave' style="border-color:#1dd1a1">
+            <div class="ui right fixed vertical menu" style="background-color:#1dd1a1;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>Montave</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h3>Montave</h3>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="http://montave.co.ke/wp-content/uploads/2016/08/Explore-Montave-1.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>While investigating at Woolwich Arsenal Sherlock learns that West did not have the three keys&mdash;door, office,
+                and safe&mdash;necessary to steal the papers. The train station clerk mentions seeing an agitated West boarding
+                the 8:15 train to London Bridge. Sherlock suspects West of following someone who had access to the Woolwich
+                chief's keyring with all three keys.</p>
+        </section>
+        <section id='uap' style="border-color:#0abde3">
+            <div class="ui right fixed vertical menu" style="background-color:#0abde3;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>UAP Old Mutual Tower</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h3>UAP Old Mutual Tower</h3>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="https://pbs.twimg.com/media/CvosPQEWcAAuxVT.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>Mycroft responds to Sherlock's telegram and mentions several spies. Hugo Oberstein of 13 Caulfield Gardens catches
+                Sherlock's eye. He heads to the nearby Gloucester Road station to investigate and learns that the windows
+                of Caulfield Gardens open over rail tracks where trains stop frequently.</p>
+        </section>
+        <section id='avic' style="border-color:#8395a7">
+            <div class="ui right fixed vertical menu" style="background-color:#8395a7;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>AVIC INTL Complex</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h3>AVIC INTL Complex</h3>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="https://farm6.staticflickr.com/5704/24072920991_a7a17c0086_o.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>Holmes deduces that the murderer placed West atop a stopped train at Caulfield Gardens. The train traveled to
+                Aldgate Station before West's body finally toppled off. Backtracking to the criminal's apartment, Holmes
+                finds a series of classified ads from
+                <em>The Daily Telegraph</em> stashed away. All are under the name Pierrot: "Monday night after nine. Two taps.
+                Only ourselves. Do not be so suspicious. Payment in hard cash when goods delivered."</p>
+        </section>
+        <section id='hazina' style="border-color:#00d2d3">
+            <div class="ui right fixed vertical menu" style="background-color:#00d2d3;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>Hazina Tower Nairobi</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h3>Hazina Tower Nairobi</h3>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2017/02/02/1498576.jpg?itok=Hvme1JUu">
+                    </div>
+                </div>
+            </div>
+            <p>Holmes and Watson head to The Daily Telegraph and place an ad to draw out the criminal. It reads: "To-night.
+                Same hour. Same place. Two taps. Most vitally important. Your own safety at stake. Pierrot." The trap works
+                and Holmes catches the criminal: Colonel Valentine Walter, the brother of Woolwich Arsenal's chief. He confesses
+                to working for Hugo Oberstein to obtain the submarine plans in order to pay off his debts.</p>
+        </section>
+        <section id='britam' style="border-color:#222f3e">
+            <div class="ui right fixed vertical menu" style="background-color:#222f3e;height:30px;width:40%;position: fixed;top:53px">
+                <div class="item">
+                    <h3>Britam Tower</h3>
+                </div>
+            </div>
+            <br>
+            <br>
+            <h3>Britam Tower</h3>
+            <div class="ui fluid large card">
+                <div class="card">
+                    <div class="image">
+                        <img class="img-card" src="https://crsite-groupafrica.netdna-ssl.com/wp-content/uploads/2015/11/britam.jpg">
+                    </div>
+                </div>
+            </div>
+            <p>Walter writes to Oberstein and convinces him to meet in the smoking room of the Charing Cross Hotel where he
+                promises additional plans for the submarine in exchange for money. The plan works and Holmes and Watson catch
+                both criminals.</p>
+            <small id="citation">
+                Author
+                <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Grace Amondi</a>
+            </small>
+        </section>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
