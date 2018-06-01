@@ -3,15 +3,20 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>Tallest Buildings in Kenya</title>
+    <title>Top Ten Tallest Buildings in Kenya</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
-    <meta name="description" content="Nairobi ScyScrappers" />
+    <meta name="description" content="The tallest building in the city is the new 32-storey, 200 m (656ft) Britam Towers. The second-tallest building in the city is the 33-storey, 163 m (535 ft) UAP Tower.
+    The most recent skyscrapers to be constructed are Prism Tower, Le'Mac and FCB Mirhab Tower." />
     <meta name="author" content="Grace Amondi" />
+    <meta property="og:image" content="http://montave.co.ke/wp-content/uploads/2016/08/Explore-Montave-1.jpg">
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
     <style>
-        body {
+        /* body {
             margin: 0;
             padding: 0;
         }
@@ -21,7 +26,7 @@
             top: 0;
             bottom: 0;
             width: 100%;
-        }
+        } */
     </style>
 </head>
 
@@ -29,9 +34,17 @@
 
 
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         #map {
+            top: 0;
+            bottom: 0;
             position: fixed;
             width: 60%;
+            float: left;
         }
 
         #features {
@@ -43,12 +56,32 @@
             height: absolute;
         }
 
+        @media only screen and (max-width: 768px) {
+            #features {
+                margin-left: 0;
+            }
+            #map {
+                float: none;
+            }
+        }
+
+        @media only screen and (max-width: 320px) {
+
+            #map {
+                float: left;
+            }
+
+            #features {
+                clear: both;
+            }
+        }
+
         section {
             padding: 40px 50px;
             line-height: 25px;
             border-bottom: 1px solid #ddd;
             opacity: 0.25;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         section.active {
@@ -77,218 +110,315 @@
             border-radius: 50%;
             cursor: pointer;
         }
+
+        .flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid silver;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrap    { 
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  flex-grow: 1;
+} 
     </style>
     <div class="ui top fixed menu">
         <div class="item">
             <img src="/images/building.png">
         </div>
         <div class="item">
-            <h1 style="color: #079992">TALLEST SCYSCRAPERS IN NAIROBI</h1>
+            <h1 style="color: #079992">TOP
+                <b style="color: black">10</b> SCYSCRAPERS IN NAIROBI</h1>
         </div>
         <div class="item right aligned">
-            <button class="ui secondary basic button" style="color:teal"><i class="github icon large"></i>
+            <button class="ui secondary basic button" style="color:teal">
+                <a href="https://github.com/Grace-Amondi/Nairobi-Sky-Scrappers" target="_blank">
+                    <i class="github icon large"></i>
+                </a>
             </button>
 
         </div>
 
     </div>
-    <div id='map'></div>
-    <div id='features'>
-        <section id='nairobi' class='active' style="border-color:#2e86de">
-            <div class="ui right fixed vertical menu" style="background-color:#2e86de;height:30px;width:40%;position: fixed;top:59px">
-                <div class="item">
-                    <h3>NAIROBI SCYSCRAPERS</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="http://www.mygov.go.ke/wp-content/uploads/2016/06/Teleposta-Towers.jpg">
+    <div class="flex-container wrap">
+        <div id="sidebar-left">
+            <div id='map'></div>
+
+        </div>
+        <div id="content">
+            <div id='features' class="features">
+                <section id='nairobi' class='flex-item active' style="border-color:#2e86de">
+                    <div class="ui right fixed vertical menu" style="background-color:#2e86de;height:30px;width:40%;position: fixed;top:59px">
+                        <div class="item">
+                            <h3>NAIROBI SCYSCRAPERS</h3>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting a new case.
-                "The London criminal is certainly a dull fellow," Sherlock bemoans. "There have been numerous petty thefts,"
-                Watson offers in response. Just then a telegram arrives from Sherlock's brother Mycroft with a mysterious
-                case.
-            </p>
-        </section>
-        <section id='teleposta' style="border-color:#00C6B2">
-            <div class="ui right fixed vertical menu" style="background-color:#00C6B2;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
-                    <h3>Teleposta Towers</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="http://www.mygov.go.ke/wp-content/uploads/2016/06/Teleposta-Towers.jpg">
+                    <br>
+                    <br>
+                    <br>
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="http://news.rambler.ru/img/2017/09/14161647.794359.8444.jpeg">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>November 1895. London is shrouded in fog and Sherlock Holmes and Watson pass time restlessly awaiting a new case.
-                "The London criminal is certainly a dull fellow," Sherlock bemoans. "There have been numerous petty thefts,"
-                Watson offers in response. Just then a telegram arrives from Sherlock's brother Mycroft with a mysterious
-                case.
-            </p>
-        </section>
-        <section id='prism' style="border-color:#FFBE00">
-            <div class="ui right fixed vertical menu" style="background-color:#FFBE00;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
-                    <h3>Prism Tower</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <h3>Prism Tower</h3>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="http://touchstoneproperties.co.ke/wp-content/uploads/2015/03/54ead872a41cd876035881.jpg">
+                    <p>Nairobi is the capital and largest city in Kenya. In Nairobi, there are 18 buildings that stand taller
+                        than 80 m (262 ft) and several under construction. The tallest building in the city is the new 32-storey,
+                        200 m (656 ft) Britam Towers. The second-tallest building in the city is the 33-storey, 163 m (535
+                        ft) UAP Tower. The most recent skyscrapers to be constructed are Prism Tower, Le'Mac and FCB Mirhab
+                        Tower.
+                    </p>
+
+                    <br>
+                    <b style="text-align: center">Sroll for more</b>
+                </section>
+                <section id='teleposta' class='flex-item' style="border-color:#00C6B2">
+                    <div class="ui right fixed vertical menu" style="background-color:#00C6B2;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Teleposta Towers</h3>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>Arthur Cadogan West was found dead, head crushed in on train tracks at Aldgate Station at 6AM Tuesday morning.
-                West worked at Woolwich Arsenal on the Bruce-Partington submarine, a secret military project. Plans for the
-                submarine had been stolen and seven of the ten missing papers were found in West's possession. Mycroft implores
-                Sherlock to take the case and recover the three missing papers.</p>
-        </section>
-        <section id='times' style="border-color:#ff6b6b">
-            <div class="ui right fixed vertical menu" style="background-color:#ff6b6b;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
+                    <br>
+                    <br>
+                    <br>
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://thumbs.dreamstime.com/b/teleposta-towers-nairobi-city-kenya-march-71376491.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <p>The offices are in a high profile building in the CBD are of Nairobi along Kenyatta Avenue. They are
+                        modern offices of high quality and style. The building is fitted with computerized access control
+                        via security cards by all tenants and Ample parking. AVAILABLE AREA: 23,000 sq.ft – 7th Floor RENT:
+                        Kshs.60/= (p.s.f.p.m) SERVICE CHARGE: Kshs. 20/=(p.s.f.p.m) LEASE TERM : 6 Years [Annual Escalation:
+                        20% after 2 years] PARKING CHARGE: Kshs. 9,000/- per Bay (Excluding VAT)
+                    </p>
+                </section>
+                <section id='prism' class='flex-item' style="border-color:#FFBE00">
+                    <div class="ui right fixed vertical menu" style="background-color:#FFBE00;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Prism Tower</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <h3>King Prism Tower</h3>
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="http://touchstoneproperties.co.ke/wp-content/uploads/2015/03/54ead872a41cd876035881.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <p>Architects must have had rough time designing this tower. Once completed, 34-storey Prism Towers will
+                        stand 133m in Third Ngong Avenue. The building which is currently under construction will house world
+                        class amenities that includes; jogging track around the building, swimming pool and gym etc. The
+                        unique design of Prism Towers makes it an architectural masterpiece that will forever shape Nairobi
+                        skyline.
+                    </p>
+                </section>
+                <section id='times' class='flex-item' style="border-color:#ff6b6b">
+                    <div class="ui right fixed vertical menu" style="background-color:#ff6b6b;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Times Towers</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <h3>Times Towers</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="https://c1.staticflickr.com/6/5569/14957845071_9bc9b0c54f_b.jpg">
+
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://c1.staticflickr.com/6/5569/14957845071_9bc9b0c54f_b.jpg">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <h3>Times Towers</h3>
-            <p>Holmes and Watson's investigations take them across London. Sherlock deduces that West was murdered elsewhere,
-                then moved to Aldgate Station to create the illusion that he was crushed on the tracks by a train. On their
-                way to Woolwich Sherlock dispatches a telegram to Mycroft at London Bridge: "Send list of all foreign spies
-                known to be in England, with full address."</p>
-        </section>
-        <section id='montave' style="border-color:#1dd1a1">
-            <div class="ui right fixed vertical menu" style="background-color:#1dd1a1;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
+                    <p>The Times Tower, also known as the New Central Bank Tower, is an office tower in Nairobi, Kenya. At 140
+                        metres (459 feet),[1] it is the second tallest building in Kenya after the recently completed UAP
+                        Tower, which has a height of 163 m (535 ft). With 38 floors, along with a 7-storey banking complex
+                        and an 11-split storey car park, it is served by 10 elevators. The building is designed to resist
+                        earthquakes, and is set on a concrete raft varying in thickness from 0.9 to 3.0 m (2 ft 11 in to
+                        9 ft 10 in).</p>
+                </section>
+                <section id='montave' class='flex-item' style="border-color:#1dd1a1">
+                    <div class="ui right fixed vertical menu" style="background-color:#1dd1a1;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Montave</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <h3>Montave</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h3>Montave</h3>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="http://montave.co.ke/wp-content/uploads/2016/08/Explore-Montave-1.jpg">
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="http://montave.co.ke/wp-content/uploads/2016/08/Explore-Montave-1.jpg">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>While investigating at Woolwich Arsenal Sherlock learns that West did not have the three keys&mdash;door, office,
-                and safe&mdash;necessary to steal the papers. The train station clerk mentions seeing an agitated West boarding
-                the 8:15 train to London Bridge. Sherlock suspects West of following someone who had access to the Woolwich
-                chief's keyring with all three keys.</p>
-        </section>
-        <section id='uap' style="border-color:#0abde3">
-            <div class="ui right fixed vertical menu" style="background-color:#0abde3;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
+                    <p>Montave, a high-end mixed use development recently announced by HassConsult Ltd, will sit on a 3.54-acre
+                        parcel of land at the junction of Lower Hill Road and Haile Selassie Avenue. Construction will begin
+                        in the second half of 2017, and is expected to be completed in three years.</p>
+                    <p>With 40 floors and standing 160m tall, the development will add more than1 million square feet of space
+                        comprising residential, commercial and office space.</p>
+                </section>
+                <section id='uap' class='flex-item' style="border-color:#0abde3">
+                    <div class="ui right fixed vertical menu" style="background-color:#0abde3;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>UAP Old Mutual Tower</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <h3>UAP Old Mutual Tower</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h3>UAP Old Mutual Tower</h3>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="https://pbs.twimg.com/media/CvosPQEWcAAuxVT.jpg">
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://pbs.twimg.com/media/CvosPQEWcAAuxVT.jpg">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>Mycroft responds to Sherlock's telegram and mentions several spies. Hugo Oberstein of 13 Caulfield Gardens catches
-                Sherlock's eye. He heads to the nearby Gloucester Road station to investigate and learns that the windows
-                of Caulfield Gardens open over rail tracks where trains stop frequently.</p>
-        </section>
-        <section id='avic' style="border-color:#8395a7">
-            <div class="ui right fixed vertical menu" style="background-color:#8395a7;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
+                    <p>UAP Old Mutual Tower UAP Old Mutual Tower Skyline.jpg UAP Old Mutual Tower in the Nairobi night skyline
+                        Record height Tallest in East Africa from 2015 to 2016. Preceded by Times Tower Surpassed by Britam
+                        Tower General information Status Complete Type Office and Retail Space Location Upper Hill, Nairobi
+                        Kenya Coordinates 01°18′02″S 36°48′47″E.
+                    </p>
+                    <p> Estimated completion August 2015 Opening 5 July 2016 Owner UAP Old Mutual Holdings Height Roof 163 m
+                        (535 ft) Technical details Floor count 33 UAP Old Mutual Tower is a 33-storey office complex in the
+                        Upper Hill neighborhood of Nairobi, the capital and largest city in Kenya. It became the tallest
+                        structure in Kenya upon its completion in 2015, surpassing Times Tower which had held that record
+                        for 15 years.</p>
+                </section>
+                <section id='avic' class='flex-item' style="border-color:#8395a7">
+                    <div class="ui right fixed vertical menu" style="background-color:#8395a7;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>AVIC INTL Complex</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <h3>AVIC INTL Complex</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h3>AVIC INTL Complex</h3>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="https://farm6.staticflickr.com/5704/24072920991_a7a17c0086_o.jpg">
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://farm6.staticflickr.com/5704/24072920991_a7a17c0086_o.jpg">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>Holmes deduces that the murderer placed West atop a stopped train at Caulfield Gardens. The train traveled to
-                Aldgate Station before West's body finally toppled off. Backtracking to the criminal's apartment, Holmes
-                finds a series of classified ads from
-                <em>The Daily Telegraph</em> stashed away. All are under the name Pierrot: "Monday night after nine. Two taps.
-                Only ourselves. Do not be so suspicious. Payment in hard cash when goods delivered."</p>
-        </section>
-        <section id='hazina' style="border-color:#00d2d3">
-            <div class="ui right fixed vertical menu" style="background-color:#00d2d3;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
+                    <p>Real estate firm Avic International is spending Sh40.5 billion to put up its 30-floor Africa headquarters
+                        in Nairobi. Avic chief executive officer Su Tianshu said the complex located in Westlands, Nairobi,
+                        will accommodate offices, luxury apartments and a five-star hotel.</p>
+                </section>
+                <section id='hazina' class='flex-item' style="border-color:#00d2d3">
+                    <div class="ui right fixed vertical menu" style="background-color:#00d2d3;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Hazina Tower Nairobi</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <h3>Hazina Tower Nairobi</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h3>Hazina Tower Nairobi</h3>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2017/02/02/1498576.jpg?itok=Hvme1JUu">
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://www.the-star.co.ke/sites/default/files/styles/new_full_content/public/articles/2017/02/02/1498576.jpg?itok=Hvme1JUu">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <p>Holmes and Watson head to The Daily Telegraph and place an ad to draw out the criminal. It reads: "To-night.
-                Same hour. Same place. Two taps. Most vitally important. Your own safety at stake. Pierrot." The trap works
-                and Holmes catches the criminal: Colonel Valentine Walter, the brother of Woolwich Arsenal's chief. He confesses
-                to working for Hugo Oberstein to obtain the submarine plans in order to pay off his debts.</p>
-        </section>
-        <section id='britam' style="border-color:#222f3e">
-            <div class="ui right fixed vertical menu" style="background-color:#222f3e;height:30px;width:40%;position: fixed;top:53px">
-                <div class="item">
+                    <p>The new NSSF-owned skyscraper will briefly be the tallest building in Kenya once complete sometimes this
+                        year. The construction of 39-storey Hazina Trade Centre stalled for a while over a court dispute
+                        between NSSF and Nakumatt. Hazina Trade Centre is located just behind Nakumatt Lifestyle in the CBD.
+                        It will be tallest building in Kenya, and the region for a while before Hass Towers takes the crown.</p>
+                </section>
+                <section id='britam' class='flex-item' style="border-color:#222f3e">
+                    <div class="ui right fixed vertical menu" style="background-color:#222f3e;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Britam Tower</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
                     <h3>Britam Tower</h3>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h3>Britam Tower</h3>
-            <div class="ui fluid large card">
-                <div class="card">
-                    <div class="image">
-                        <img class="img-card" src="https://crsite-groupafrica.netdna-ssl.com/wp-content/uploads/2015/11/britam.jpg">
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://crsite-groupafrica.netdna-ssl.com/wp-content/uploads/2015/11/britam.jpg">
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <p>Britam Holdings Ltd is building a unique skyscraper in Upper Hill. The 32-storey skyscraper will be complete
+                        by mid-2016. The skyscraper has already muscled itself up in the sky to become one of the most visible
+                        structures towering Upper Hill area.</p>
+
+                </section>
+                <section id='upperhill' class='flex-item' style="border-color:#3c6382">
+                    <div class="ui right fixed vertical menu" style="background-color:#3c6382;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Upperhill Square</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3>Upperhill Square</h3>
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="http://nairobiwire.com/wp-content/uploads/2015/03/upperhill.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <p>Africa’s visionary project, Upperhill Square is located in Upper Hill, which is one of Africa’s most
+                        sought after commercial business districts. This iconic and hitherto unparalleled development will
+                        be Nairobi’s iconic landmark and is poised to be one of the tallest towers in Africa. It comprises
+                        of 66 floors standing at a height of approximately 290 metres.
+                        <br>The project is set on a 2.3 acre property and comprises of approximately 16,000 square meters of
+                        retail space, a 200 key premier mid-scale business hotel (Akwa Premier), 356 residential apartments
+                        and approximately 16,000 square meters of commercial office space. At the apex of the tower will
+                        be a viewing deck of 1,500 square meters and a Private Members Club.
+                    </p>
+                </section>
+                <section id='hass' class='flex-item' style="border-color:#f6b93b">
+                    <div class="ui right fixed vertical menu" style="background-color:#f6b93b;height:30px;width:40%;position: fixed;top:53px">
+                        <div class="item">
+                            <h3>Hass Towers,Hilton</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3>Hass Towers,Hilton</h3>
+                    <div class="ui fluid large card">
+                        <div class="card">
+                            <div class="image">
+                                <img class="img-card" src="https://cdn.static-economist.com/sites/default/files/images/2017/05/articles/main/20170527_map006.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <p>Excavation for Africa’s tallest skyscraper started in November 2015 in Upper Hill. Hass Tower will overtake
+                        South Africa’s 50-storey Carlton Centre in Johannesburg to be Africa’s tallest building. 70-storey
+                        Hass Tower/Pinnacle Tower will stand at 300m (980ft), 77m higher than Carlton Centre’s 223m (732ft).
+                        <br>The project also encompasses a second tower which will be 45-storey. The project designed jointly
+                        by Archgroup and Meinhardt Group, will consist of a 45 storied luxury hotel tower, a 70 storied office
+                        tower, class A retail space, a helipad and a parking.</p>
+                    <small id="citation">
+                        Author
+                        <a href='https://github.com/Grace-Amondi'>Grace Amondi</a>
+                    </small>
+                </section>
             </div>
-            <p>Walter writes to Oberstein and convinces him to meet in the smoking room of the Charing Cross Hotel where he
-                promises additional plans for the submarine in exchange for money. The plan works and Holmes and Watson catch
-                both criminals.</p>
-            <small id="citation">
-                Author
-                <a href='http://www.gutenberg.org/files/2346/2346-h/2346-h.htm'>Grace Amondi</a>
-            </small>
-        </section>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>

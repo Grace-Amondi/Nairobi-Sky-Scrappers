@@ -17,20 +17,20 @@ var chapters = {
   teleposta: {
     bearing: 27,
     center: [36.819578, -1.28599],
-    zoom: 15.5,
-    pitch: 20
+    zoom: 17.5,
+    pitch:30
   },
   prism: {
     duration: 6000,
     center: [36.809274, -1.293326],
     bearing: 150,
-    zoom: 15,
-    pitch: 0
+    zoom: 17,
+    pitch: 60
   },
   times: {
     bearing: 90,
     center: [36.823868, -1.289967],
-    zoom: 13,
+    zoom: 17,
     speed: 0.6,
     pitch: 40
   },
@@ -45,13 +45,15 @@ var chapters = {
     bearing: 45,
     center: [36.819496, -1.298979],
     zoom: 15.3,
-    pitch: 20,
+    pitch: 30,
     speed: 0.5
   },
   avic: {
     bearing: 180,
     center: [36.808846, -1.270421],
-    zoom: 12.3
+    zoom: 17.3,
+    pitch: 90
+
   },
   hazina: {
     bearing: 90,
@@ -64,6 +66,17 @@ var chapters = {
     center: [36.81337, -1.29934],
     zoom: 17.3,
     pitch: 20
+  },
+  upperhill:{
+    bearing: 180,
+    center: [37.078441,-1.035775],
+    zoom: 12.3
+  },
+  hass:{
+    bearing: 90,
+    center: [36.776891,-1.257963],
+    zoom: 17.3,
+    pitch: 40
   }
 };
 
@@ -118,3 +131,41 @@ function isElementOnScreen(id) {
   var bounds = element.getBoundingClientRect();
   return bounds.top < window.innerHeight && bounds.bottom > 0;
 }
+map.on('load', function() {
+  // Insert the layer beneath any symbol layer.
+  var layers = map.getStyle().layers;
+
+  var labelLayerId;
+  for (var i = 0; i < layers.length; i++) {
+      if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+          labelLayerId = layers[i].id;
+          break;
+      }
+  }
+
+  map.addLayer({
+      'id': '3d-buildings',
+      'source': 'composite',
+      'source-layer': 'building',
+      'filter': ['==', 'extrude', 'true'],
+      'type': 'fill-extrusion',
+      'minzoom': 15,
+      'paint': {
+          'fill-extrusion-color': '#aaa',
+
+          // use an 'interpolate' expression to add a smooth transition effect to the
+          // buildings as the user zooms in
+          'fill-extrusion-height': [
+              "interpolate", ["linear"], ["zoom"],
+              15, 0,
+              15.05, ["get", "height"]
+          ],
+          'fill-extrusion-base': [
+              "interpolate", ["linear"], ["zoom"],
+              15, 0,
+              15.05, ["get", "min_height"]
+          ],
+          'fill-extrusion-opacity': .8
+      }
+  }, labelLayerId);
+});
